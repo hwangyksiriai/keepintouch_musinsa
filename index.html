@@ -575,7 +575,8 @@
   .form-field input[type="text"],
   .form-field input[type="tel"],
   .form-field input[type="email"],
-  .form-field input[type="url"] {
+  .form-field input[type="url"],
+  .form-field input[type="date"] {
     width: 100%;
     padding: 13px 14px;
     border: 1px solid rgba(44,24,16,0.15);
@@ -997,6 +998,11 @@
         <label for="af-email">이메일 <span class="req">*</span></label>
         <input type="email" id="af-email" name="email" required autocomplete="email">
       </div>
+      <div class="form-field">
+        <label for="af-visit-date">방문 희망일 <span class="req">*</span></label>
+        <input type="date" id="af-visit-date" name="visitDate" min="2026-07-29" max="2026-08-02" required>
+        <p class="form-hint">7월 29일(수) ~ 8월 2일(일) 중 방문 예정일을 선택해 주세요.</p>
+      </div>
       <div class="agree-row">
         <input type="checkbox" id="af-agree" name="agree" required>
         <label for="af-agree">안내된 캠페인별 가이드라인 및 고료 조건을 확인했으며 이에 동의합니다.<br>제작된 콘텐츠는 브랜드 및 SIRIAI의 2차 활용에 동의합니다. <strong>(필수)</strong></label>
@@ -1073,6 +1079,7 @@
         instagram: document.getElementById('af-instagram').value,
         phone: document.getElementById('af-phone').value,
         email: document.getElementById('af-email').value,
+        visitDate: document.getElementById('af-visit-date').value,
         submittedAt: new Date().toISOString()
       };
 
