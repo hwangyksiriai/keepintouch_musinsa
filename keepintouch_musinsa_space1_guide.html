@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KEEPINTOUCH × 무신사 스페이스1 협업 가이드</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --blush: #F2C4B2;
+    --rose: #D4826A;
+    --deep: #2C1810;
+    --warm-gray: #8C7B74;
+    --light-pink: #FBE9E3;
+    --accent: #C4614A;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--deep);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background:
+      linear-gradient(rgba(44,24,16,0.72), rgba(44,24,16,0.8)),
+      url('2.PNG');
+    background-size: cover;
+    background-position: center;
+    color: var(--cream);
+    padding: 80px 60px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,130,106,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 10%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(242,196,178,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: var(--blush);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 7vw, 72px);
+    font-weight: 300;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-brand span {
+    color: var(--blush);
+  }
+
+  .hero-sub {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--warm-gray);
+    margin-top: 14px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--rose);
+    color: var(--white);
+    padding: 10px 22px;
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .hero-date-badge::before {
+    content: '📅';
+    font-size: 14px;
+  }
+
+  /* ─── LAYOUT ─── */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ─── SECTION ─── */
+  .section {
+    padding: 64px 0;
+    border-bottom: 1px solid rgba(44,24,16,0.08);
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .section:nth-child(1) { animation-delay: 0.1s; }
+  .section:nth-child(2) { animation-delay: 0.2s; }
+  .section:nth-child(3) { animation-delay: 0.3s; }
+  .section:nth-child(4) { animation-delay: 0.4s; }
+  .section:nth-child(5) { animation-delay: 0.5s; }
+  .section:nth-child(6) { animation-delay: 0.6s; }
+
+  .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--deep);
+    margin-bottom: 28px;
+    line-height: 1.4;
+  }
+
+  /* ─── INFO CARD ─── */
+  .info-card {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 32px 36px;
+    border-left: 3px solid var(--rose);
+    margin-bottom: 16px;
+  }
+
+  .info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(44,24,16,0.06);
+    font-size: 14px;
+  }
+
+  .info-row:last-child { border-bottom: none; }
+
+  .info-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .info-label {
+    color: var(--warm-gray);
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-transform: uppercase;
+    min-width: 70px;
+    padding-top: 2px;
+  }
+
+  .info-value {
+    color: var(--deep);
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  /* ─── KEY POINTS ─── */
+  .key-points {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .key-point {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    transition: box-shadow 0.2s;
+  }
+
+  .key-point:hover {
+    box-shadow: 0 4px 20px rgba(196,97,74,0.1);
+  }
+
+  .key-point-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--blush);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 28px;
+  }
+
+  .key-point-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--deep);
+  }
+
+  .key-point-text strong {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ─── HIGHLIGHT BOX ─── */
+  .highlight-box {
+    background: var(--light-pink);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+
+  .highlight-box .hl-title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .highlight-box p {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--deep);
+  }
+
+  /* ─── KEYWORD PILLS ─── */
+  .keyword-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .pill {
+    background: var(--deep);
+    color: var(--cream);
+    padding: 6px 16px;
+    border-radius: 2px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 400;
+  }
+
+  .pill.outline {
+    background: transparent;
+    border: 1px solid var(--rose);
+    color: var(--rose);
+  }
+
+  /* ─── SHOT GUIDE ─── */
+  .shot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 600px) {
+    .shot-grid { grid-template-columns: 1fr; }
+  }
+
+  .shot-card {
+    background: var(--white);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(44,24,16,0.06);
+  }
+
+  .shot-card-header {
+    background: var(--deep);
+    color: var(--cream);
+    padding: 14px 18px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .shot-card-header .shot-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--blush);
+    line-height: 1;
+  }
+
+  .shot-card-body {
+    padding: 16px 18px;
+    font-size: 13px;
+    color: var(--warm-gray);
+    line-height: 1.7;
+  }
+
+  .shot-card-body .count {
+    display: inline-block;
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .shot-card-body .must {
+    display: inline-block;
+    background: var(--light-pink);
+    color: var(--accent);
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-weight: 500;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── REFERENCE IMAGES ─── */
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  @media (max-width: 600px) {
+    .ref-grid { grid-template-columns: 1fr; }
+  }
+
+  .ref-item {
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ref-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .ref-item:hover img {
+    transform: scale(1.04);
+  }
+
+  .ref-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(44,24,16,0.75));
+    color: var(--cream);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 20px 14px 12px;
+  }
+
+  .ref-item.reel-link {
+    background: var(--deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 220px;
+  }
+
+  .ref-item.reel-link a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--cream);
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .ref-item.reel-link .reel-icon {
+    font-size: 28px;
+  }
+
+  .ref-item.reel-link .reel-text {
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 1.6;
+  }
+
+  .ref-item.reel-link .reel-text small {
+    display: block;
+    color: var(--warm-gray);
+    font-size: 10px;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── HASHTAG ─── */
+  .hashtag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .hashtag {
+    background: var(--white);
+    border: 1px solid var(--blush);
+    color: var(--deep);
+    padding: 8px 18px;
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+
+  .hashtag:hover {
+    background: var(--rose);
+    border-color: var(--rose);
+    color: var(--white);
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--deep);
+    color: var(--warm-gray);
+    padding: 48px 60px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    line-height: 2;
+  }
+
+  .footer .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    color: var(--blush);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--blush);
+    margin: 20px 0;
+  }
+
+  /* ─── PRODUCT LINK ─── */
+  .product-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--deep);
+    color: var(--cream);
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 2px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 16px;
+    transition: background 0.2s;
+  }
+
+  .product-link:hover {
+    background: var(--accent);
+  }
+
+  .product-link::after {
+    content: '↗';
+    font-size: 14px;
+  }
+
+  /* ─── NOTICE ─── */
+  .notice {
+    font-size: 12px;
+    color: var(--warm-gray);
+    font-style: italic;
+    margin-top: 16px;
+    line-height: 1.8;
+  }
+
+  /* ─── APPLY FORM ─── */
+  .notice-callout {
+    background: #FFF6E2;
+    border: 1px solid #EFC873;
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+  }
+
+  .notice-callout .nc-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #A9700F;
+    margin-bottom: 8px;
+  }
+
+  .notice-callout p {
+    font-size: 13px;
+    color: #8C6A1F;
+    line-height: 1.8;
+  }
+
+  .apply-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .form-field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--warm-gray);
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .form-field label .req {
+    color: var(--accent);
+  }
+
+  .form-field input[type="text"],
+  .form-field input[type="tel"],
+  .form-field input[type="email"],
+  .form-field input[type="url"] {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid rgba(44,24,16,0.15);
+    border-radius: 4px;
+    background: var(--white);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    color: var(--deep);
+    transition: border-color 0.2s;
+  }
+
+  .form-field input:focus {
+    outline: none;
+    border-color: var(--rose);
+  }
+
+  .form-field input[type="file"] {
+    width: 100%;
+    font-size: 13px;
+    color: var(--warm-gray);
+    padding: 12px 0;
+  }
+
+  .form-hint {
+    font-size: 11px;
+    color: var(--warm-gray);
+    margin-top: 4px;
+  }
+
+  .agree-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--white);
+    border: 1px solid rgba(44,24,16,0.1);
+    border-radius: 4px;
+    padding: 16px 18px;
+    margin-top: 6px;
+  }
+
+  .agree-row input[type="checkbox"] {
+    margin-top: 3px;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--rose);
+    flex-shrink: 0;
+  }
+
+  .agree-row label {
+    font-size: 13px;
+    color: var(--deep);
+    line-height: 1.7;
+  }
+
+  .agree-row label strong {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .apply-submit {
+    width: 100%;
+    background: var(--deep);
+    color: var(--cream);
+    border: none;
+    padding: 18px;
+    border-radius: 4px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+  }
+
+  .apply-submit:hover:not(:disabled) {
+    background: var(--accent);
+  }
+
+  .apply-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .apply-status {
+    font-size: 13px;
+    text-align: center;
+    margin-top: 14px;
+    display: none;
+  }
+
+  .apply-status.success {
+    display: block;
+    color: #2C7A4B;
+  }
+
+  .apply-status.error {
+    display: block;
+    color: var(--accent);
+  }
+
+  /* ─── SETTLEMENT ─── */
+  .settlement-card {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 28px 32px;
+    border: 1px solid rgba(44,24,16,0.08);
+  }
+
+  .settlement-intro {
+    font-size: 14px;
+    color: var(--deep);
+    line-height: 1.9;
+    margin-bottom: 24px;
+  }
+
+  .settlement-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(44,24,16,0.08);
+    font-size: 14px;
+  }
+
+  .settlement-row:last-child {
+    border-bottom: none;
+  }
+
+  .settlement-label {
+    color: var(--warm-gray);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .settlement-value {
+    color: var(--deep);
+    font-weight: 500;
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  .settlement-warning {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #FDEDEC;
+    border: 1px solid #F0B4AE;
+    color: #B3413A;
+    border-radius: 4px;
+    padding: 14px 18px;
+    font-size: 13px;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .settlement-card { padding: 20px 18px; }
+    .settlement-row { flex-direction: column; gap: 4px; }
+    .settlement-value { text-align: left; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 48px 20px 44px; }
+    .hero-brand { font-size: clamp(32px, 10vw, 48px); letter-spacing: 4px; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 2px; }
+    .hero-sub { font-size: 11px; letter-spacing: 1px; }
+    .hero-date-badge { font-size: 12px; padding: 9px 16px; margin-top: 28px; }
+
+    .container { padding: 0 16px; }
+
+    .section { padding: 44px 0; }
+    .section-title { font-size: 18px; }
+
+    .info-card { padding: 20px 16px; }
+    .info-row {
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 14px 0;
+    }
+    .info-label { min-width: 100%; margin-bottom: 2px; }
+    .info-icon { display: inline; }
+    .info-value { font-size: 13px; }
+
+    .key-point { padding: 16px 18px; gap: 14px; }
+    .key-point-num { font-size: 24px; width: 24px; }
+    .key-point-text { font-size: 13px; }
+
+    .highlight-box { padding: 18px 20px; }
+    .highlight-box p { font-size: 13px; }
+
+    .hashtag { padding: 7px 14px; font-size: 12px; }
+
+    .shot-grid { grid-template-columns: 1fr; }
+    .ref-grid { grid-template-columns: 1fr; }
+    .ref-item img { height: auto; object-fit: contain; }
+    .ref-item.reel-link { height: auto; padding: 24px 0; }
+
+    .footer { padding: 40px 20px; }
+    .footer .footer-brand { font-size: 16px; letter-spacing: 4px; }
+
+    .product-link { font-size: 11px; padding: 11px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Influencer Collaboration Guide</p>
+    <h1 class="hero-brand">KEEPIN<span>TOUCH</span></h1>
+    <p class="hero-sub">× MUSINSA SPACE 1 · Seongsu</p>
+    <div class="hero-date-badge">2026년 7월 29일(수) — 8월 2일(일)</div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <!-- SECTION 1: 협업 개요 -->
+  <div class="section">
+    <p class="section-label">Overview</p>
+    <h2 class="section-title">이번 협업 한눈에 보기</h2>
+    <div class="info-card">
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <span class="info-label">장소</span>
+        <span class="info-value">무신사 스페이스 1<br>서울 성동구 연무장길 81 1층</span>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📅</span>
+        <span class="info-label">방문 기간</span>
+        <span class="info-value">7월 29일(수) ~ 8월 2일(일)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">⏰</span>
+        <span class="info-label">운영 시간</span>
+        <span class="info-value">11:00 – 20:00</span>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📤</span>
+        <span class="info-label">업로드</span>
+        <span class="info-value">방문 후 <span style="color:var(--accent); font-weight:500;">3일 이내</span> 발행</span>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🎬</span>
+        <span class="info-label">콘텐츠 타입</span>
+        <span class="info-value">릴스 <span style="color:var(--accent); font-weight:500;">(20초 이상)</span></span>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏷️</span>
+        <span class="info-label">필수 태그</span>
+        <span class="info-value">@keepintouch.official</span>
+      </div>
+    </div>
+
+    <div class="ref-item" style="margin-top:16px;">
+      <img src="배너.PNG" alt="무신사 스페이스 1 외관" style="height:260px;">
+      <div class="ref-label">무신사 스페이스 1 외관</div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: 콘텐츠 포인트 -->
+  <div class="section">
+    <p class="section-label">Content Points</p>
+    <h2 class="section-title">꼭 담아주세요</h2>
+    <p style="font-size:13px; color:var(--warm-gray); margin-bottom:24px;">광고처럼 느껴지지 않게, 크리에이터 본인의 언어로 자연스럽게 녹여주세요 🍑</p>
+
+    <div class="key-points">
+      <div class="key-point">
+        <span class="key-point-num">01</span>
+        <div class="key-point-text">
+          <strong>무신사 뷰티 스페이스 성수 팝업</strong><br>
+          성수 무신사 뷰티 스페이스에서 열리는 키핀터치 팝업스토어 현장을 방문하고, 흥미로운 팝업 분위기와 제품을 담은 릴스(Reels) 콘텐츠를 제작해 주세요.
+        </div>
+      </div>
+      <div class="key-point">
+        <span class="key-point-num">02</span>
+        <div class="key-point-text">
+          <strong>신규 소다 컬러 소개</strong><br>
+          '모공 파우더 명가 키핀터치'의 노하우가 집약된 버터 슈가 파우더에서 새롭게 런칭된 <strong>신규 소다 컬러</strong>를 소개해 주세요.
+        </div>
+      </div>
+      <div class="key-point">
+        <span class="key-point-num">03</span>
+        <div class="key-point-text">
+          <strong>제품 표현 포인트</strong><br>
+          매트, 글로우, 선크림(노파데) 등 어떤 베이스 위에서도 뭉침 없이 자연스럽고 유분기 없이 매끄럽게 표현되는 파우더라는 점을 강조해 주세요.
+        </div>
+      </div>
+      <div class="key-point">
+        <span class="key-point-num">04</span>
+        <div class="key-point-text">
+          <strong>오디오 구성</strong><br>
+          영상은 몰입감을 위해 '나레이션 더빙(AI 목소리 활용 가능)' 형태로 제작해 주시길 희망합니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:20px; background:transparent; border:1px dashed var(--rose);">
+      <p class="hl-title">💡 참고 사항</p>
+      <p>팝업 세부 구성 및 세부 가이드 내용은 상황에 따라 추후 일부 변경될 수 있는 점 양해 부탁드립니다.</p>
+    </div>
+
+    <div class="highlight-box" style="margin-top:24px;">
+      <p class="hl-title">✦ 추천 키워드 (자유롭게 활용)</p>
+      <p>콘텐츠에 아래 키워드를 포함하면 더욱 좋아요.</p>
+      <div class="keyword-pills" style="margin-top:12px;">
+        <span class="pill">베이스 안 무너지는 파우더</span>
+        <span class="pill">모공·요철 커버 파우더</span>
+        <span class="pill">유분기 잡는 매트 파우더</span>
+        <span class="pill" style="background:var(--rose);">신규 소다 컬러 런칭</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: 촬영 가이드 -->
+  <div class="section">
+    <p class="section-label">Shot Guide</p>
+    <h2 class="section-title">촬영 가이드</h2>
+
+    <div class="shot-grid">
+      <div class="shot-card">
+        <div class="shot-card-header">
+          <span class="shot-num">A</span>
+          공간 무드 컷
+        </div>
+        <div class="shot-card-body">
+          무신사 뷰티 스페이스의 트렌디한 외관 또는 힙한 내부 인테리어를 보여주는 컷
+        </div>
+      </div>
+      <div class="shot-card">
+        <div class="shot-card-header">
+          <span class="shot-num">B</span>
+          매대·진열 컷
+        </div>
+        <div class="shot-card-body">
+          매장 내 키핀터치 제품이 진열된 존을 감각적으로 촬영
+        </div>
+      </div>
+      <div class="shot-card">
+        <div class="shot-card-header">
+          <span class="shot-num">C</span>
+          발색·사용 컷
+        </div>
+        <div class="shot-card-body">
+          현장에서 직접 테스터하거나, 신규 소다 컬러 소개
+          <span class="must">신규 소다 파우더 촬영 필수</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:13px; color:var(--warm-gray);">
+      함께 소개 가능한 제품: 젤리 립 플럼퍼 틴트, 영 페어링 모공 파우더 등
+    </p>
+  </div>
+
+  <!-- SECTION 4: 레퍼런스 -->
+  <div class="section">
+    <p class="section-label">Reference</p>
+    <h2 class="section-title">촬영 무드 레퍼런스</h2>
+    <p class="notice">아래 영상은 참고용 레퍼런스입니다. 크리에이터 본인의 감성으로 자유롭게 촬영해 주세요.</p>
+
+    <div class="ref-item reel-link" style="width:100%; border-radius:4px; margin-top:20px;">
+      <a href="https://www.instagram.com/reels/DaRqrC6J-ZQ/" target="_blank">
+        <span class="reel-icon">🎬</span>
+        <span class="reel-text">레퍼런스 릴스 보기<br><small>Instagram Reels ↗</small></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- SECTION 5: 해시태그 -->
+  <div class="section">
+    <p class="section-label">Hashtags</p>
+    <h2 class="section-title">필수 해시태그</h2>
+    <p style="font-size:13px; color:var(--warm-gray); margin-bottom:4px;">아래 해시태그를 모두 포함해 주세요.</p>
+    <div class="hashtag-list">
+      <span class="hashtag">#키핀터치</span>
+      <span class="hashtag">#무신사뷰티</span>
+      <span class="hashtag">#무신사</span>
+      <span class="hashtag">#무신사스페이스1</span>
+      <span class="hashtag">#무신사스페이스1성수</span>
+    </div>
+  </div>
+
+  <!-- SECTION 6: 캠페인 신청 -->
+  <div class="section" style="border-bottom:none;">
+    <p class="section-label">Apply</p>
+    <h2 class="section-title">캠페인 신청하기</h2>
+
+    <div class="notice-callout">
+      <div class="nc-title">🚀 업로드 · 정산 안내</div>
+      <p>
+        안내된 업로드 마감일까지 업로드 시 정산이 진행됩니다.<br>
+        정산은 확인 후 2주 이내에 지급됩니다.
+      </p>
+    </div>
+
+    <form class="apply-form" id="applyForm">
+      <div class="form-field">
+        <label for="af-name">이름 <span class="req">*</span></label>
+        <input type="text" id="af-name" name="name" required autocomplete="name">
+      </div>
+      <div class="form-field">
+        <label for="af-instagram">인스타그램 링크 <span class="req">*</span></label>
+        <input type="url" id="af-instagram" name="instagram" placeholder="https://instagram.com/아이디" required>
+      </div>
+      <div class="form-field">
+        <label for="af-phone">휴대폰 번호 <span class="req">*</span></label>
+        <input type="tel" id="af-phone" name="phone" placeholder="010-0000-0000" required autocomplete="tel">
+      </div>
+      <div class="form-field">
+        <label for="af-email">이메일 <span class="req">*</span></label>
+        <input type="email" id="af-email" name="email" required autocomplete="email">
+      </div>
+      <div class="agree-row">
+        <input type="checkbox" id="af-agree" name="agree" required>
+        <label for="af-agree">안내된 캠페인별 가이드라인 및 고료 조건을 확인했으며 이에 동의합니다.<br>제작된 콘텐츠는 브랜드 및 SIRIAI의 2차 활용에 동의합니다. <strong>(필수)</strong></label>
+      </div>
+
+      <button type="submit" class="apply-submit" id="applySubmitBtn">캠페인 신청하기 →</button>
+      <p class="apply-status" id="applyStatus"></p>
+    </form>
+  </div>
+
+  <!-- SECTION 7: 정산 안내 -->
+  <div class="section" style="border-bottom:none;">
+    <p class="section-label">Settlement</p>
+    <h2 class="section-title">정산 안내</h2>
+
+    <div class="settlement-card">
+      <p class="settlement-intro">
+        캠페인 선정 완료 후 정산을 위한 서류 및 연락처를 누락 없이 제출해 주세요. 확인 후 <strong style="color:var(--accent);">2주 이내</strong>에 지급됩니다.
+      </p>
+
+      <div class="settlement-row">
+        <span class="settlement-label">제출 필수 서류</span>
+        <span class="settlement-value">성함, 연락처,<br>신분증 사본(뒷자리 포함), 통장 사본</span>
+      </div>
+      <div class="settlement-row">
+        <span class="settlement-label">수신 이메일</span>
+        <span class="settlement-value">hwangyksiriai@gmail.com</span>
+      </div>
+      <div class="settlement-row">
+        <span class="settlement-label">메일 제목</span>
+        <span class="settlement-value">키핀터치_이름_@인스타핸들</span>
+      </div>
+
+      <div class="settlement-warning">
+        ⚠️ 확정 안내 받은 분에 한하여 전달 부탁드립니다.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span class="footer-brand">KEEPINTOUCH</span>
+  문의 사항이 있으시면 담당자에게 연락 주세요.<br>
+  본 가이드는 콘텐츠 제작 참고용이며, 크리에이터의 자유로운 표현을 존중합니다.
+</div>
+
+<script>
+  // 아래 URL을 배포한 Google Apps Script 웹 앱 URL로 교체하세요.
+  const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL';
+
+  const applyForm = document.getElementById('applyForm');
+  const applyStatus = document.getElementById('applyStatus');
+  const applySubmitBtn = document.getElementById('applySubmitBtn');
+
+  applyForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    applyStatus.className = 'apply-status';
+    applyStatus.textContent = '';
+
+    if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL') {
+      applyStatus.textContent = '⚠️ 구글 시트 연동 URL이 아직 설정되지 않았습니다. (관리자 안내 필요)';
+      applyStatus.className = 'apply-status error';
+      return;
+    }
+
+    applySubmitBtn.disabled = true;
+    applySubmitBtn.textContent = '제출 중...';
+
+    try {
+      const payload = {
+        name: document.getElementById('af-name').value,
+        instagram: document.getElementById('af-instagram').value,
+        phone: document.getElementById('af-phone').value,
+        email: document.getElementById('af-email').value,
+        submittedAt: new Date().toISOString()
+      };
+
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+
+      applyForm.reset();
+      applyStatus.textContent = '✓ 신청이 완료되었습니다. 감사합니다!';
+      applyStatus.className = 'apply-status success';
+      applySubmitBtn.textContent = '캠페인 신청하기 →';
+    } catch (err) {
+      applyStatus.textContent = '제출 중 오류가 발생했습니다. 다시 시도해 주세요.';
+      applyStatus.className = 'apply-status error';
+      applySubmitBtn.textContent = '캠페인 신청하기 →';
+    } finally {
+      applySubmitBtn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>
