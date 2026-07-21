@@ -25,7 +25,7 @@ function doPost(e) {
       || SpreadsheetApp.getActiveSpreadsheet().insertSheet(SHEET_NAME);
 
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['제출 시각', '이름', '인스타그램 링크', '휴대폰 번호', '이메일', '방문 희망일']);
+      sheet.appendRow(['제출 시각', '이름', '인스타그램 링크', '휴대폰 번호', '이메일', '방문 희망일', '타입', '고료']);
     }
 
     sheet.appendRow([
@@ -34,7 +34,9 @@ function doPost(e) {
       data.instagram || '',
       data.phone || '',
       data.email || '',
-      data.visitDate || ''
+      data.visitDate || '',
+      data.type || '',
+      data.fee || ''
     ]);
 
     return ContentService.createTextOutput(JSON.stringify({ result: 'success' }))
